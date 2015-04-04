@@ -15,14 +15,14 @@
   <ion-side-menu side="left">
     <ion-content>
       <ion-list>
-        <ion-item nav-clear menu-close ng-href="#/record" class="item-icon-left item-assertive">
+        <ion-item nav-clear menu-close ng-href="#/app/record" class="item-icon-left item-assertive">
           <i class="icon ion-mic-a"></i>
           Record
         </ion-item>
         <ion-item class="item-divider">
           Past meetings
         </ion-item>
-        <ion-item nav-clear menu-close ng-repeat="meeting in meetings" ng-href="#/meeting/{{meeting.title}}">
+        <ion-item nav-clear menu-close ng-repeat="meeting in meetings" ng-href="#/app/meeting/{{meeting.id}}">
           <h2>{{meeting.title}}</h2>
           <p>{{meeting.time}}</p>
         </ion-item>
