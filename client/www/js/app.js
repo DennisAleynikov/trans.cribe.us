@@ -24,7 +24,7 @@ angular.module('transcribe', ['ionic', 'transcribe.controllers'])
   $stateProvider
 
   .state('app', {
-    url: "",
+    url: "/app",
     abstract: true,
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
@@ -34,7 +34,7 @@ angular.module('transcribe', ['ionic', 'transcribe.controllers'])
       views: {
         'menuContent': {
           templateUrl: "templates/record.html",
-          controller: 'PlaylistsCtrl'
+          controller: 'RecordCtrl'
         }
       }
     })
@@ -49,5 +49,5 @@ angular.module('transcribe', ['ionic', 'transcribe.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/record');
+  $urlRouterProvider.otherwise('/app/record');
 });
