@@ -3,6 +3,11 @@ angular.module('transcribe.controllers', [])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.meetings = [
+    {title: 'Yearly Review', time: 'Yesterday'},
+    {title: 'Daily Lunch', time: 'Tomorrow'},
+    {title: 'Idea Brainstorm', time: 'Last night'},
+    {title: 'Random Meeting', time: 'Random time'}];
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -19,6 +24,10 @@ angular.module('transcribe.controllers', [])
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
+  };
+
+  $scope.open_meeting = function(id) {
+
   };
 
   // Perform the login action when the user submits the login form
@@ -44,5 +53,6 @@ angular.module('transcribe.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('MeetingCtrl', function($scope, $stateParams) {
+    $scope.title = "hell";
 });

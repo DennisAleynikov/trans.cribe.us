@@ -24,48 +24,30 @@ angular.module('transcribe', ['ionic', 'transcribe.controllers'])
   $stateProvider
 
   .state('app', {
-    url: "/app",
+    url: "",
     abstract: true,
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
-
-  .state('app.search', {
-    url: "/search",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/search.html"
-      }
-    }
-  })
-
-  .state('app.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html"
-      }
-    }
-  })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.record', {
+      url: "/record",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
+          templateUrl: "templates/record.html",
           controller: 'PlaylistsCtrl'
         }
       }
     })
 
   .state('app.single', {
-    url: "/playlists/:playlistId",
+    url: "/meeting/:meetingId",
     views: {
       'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+        templateUrl: "templates/meeting.html",
+        controller: 'MeetingCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/record');
 });
