@@ -10,7 +10,7 @@ angular.module('transcribe.controllers', [])
     {title: 'Random Meeting', time: 'Random time', id:"X4f2"}];
 
   $scope.record = function() {
-
+    alert("hi");
   }
 })
 
