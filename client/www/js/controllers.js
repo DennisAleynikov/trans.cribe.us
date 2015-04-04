@@ -54,5 +54,5 @@ angular.module('transcribe.controllers', [])
 })
 
 .controller('MeetingCtrl', function($scope, $stateParams) {
-    $scope.title = "hell";
+    $scope.title = $stateParams.meetingId;
 });
