@@ -4,45 +4,17 @@ angular.module('transcribe.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
   $scope.meetings = [
-    {title: 'Yearly Review', time: 'Yesterday'},
-    {title: 'Daily Lunch', time: 'Tomorrow'},
-    {title: 'Idea Brainstorm', time: 'Last night'},
-    {title: 'Random Meeting', time: 'Random time'}];
+    {title: 'Yearly Review', time: 'Yesterday', id:"I83N"},
+    {title: 'Daily Lunch', time: 'Tomorrow', id:"B3NE"},
+    {title: 'Idea Brainstorm', time: 'Last night', id:"7hhC"},
+    {title: 'Random Meeting', time: 'Random time', id:"X4f2"}];
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+  $scope.record = function() {
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  $scope.open_meeting = function(id) {
-
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
+  }
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('RecordCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -55,4 +27,6 @@ angular.module('transcribe.controllers', [])
 
 .controller('MeetingCtrl', function($scope, $stateParams) {
     $scope.title = $stateParams.meetingId;
+    $scope.user = {name: 'dennis', pic: 'http://i.imgur.com/N0HqWH0.jpg'};
+    $scope.transcript = [{m:"Maecenas sed diam eget risus varius blandit sit amet non magna.",u:'dennis'},{m:"Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.", u:'ray'},{m:"Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nulla vitae elit libero, a pharetra augue.", u:'anne'}];
 });
