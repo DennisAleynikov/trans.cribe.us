@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 
 .center{
-  display: -webkit-box;
+  	display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -32,8 +32,9 @@
 }
 
 .button-mic {
-  border-radius: 60px !important;
-  height: 120px;
-  width: 120px !important;
-  font-size: 60px;
+  border-radius: 80px !important;
+  height: 160px;
+  width: 160px !important;
+  font-size: 90px;
+  border: none;
 }
