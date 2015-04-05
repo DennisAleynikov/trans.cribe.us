@@ -4,13 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('transcribe', ['ionic', 'ngCordova', 'transcribe.controllers'])
+angular.module('transcribe', ['ionic', 'transcribe.controllers'])
 
-  .run(function ($ionicPlatform, $cordovaStatusbar) {
+  .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
-      // Make the statusbar white
-      $cordovaStatusbar.overlaysWebView(true)
-      $cordovaStatusBar.style(1)
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -18,7 +15,7 @@ angular.module('transcribe', ['ionic', 'ngCordova', 'transcribe.controllers'])
       }
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
-        StatusBar.styleDefault();
+        StatusBar.styleLightContent();;
       }
     });
   })

@@ -1,6 +1,6 @@
 angular.module('transcribe.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $ionicActionSheet, $timeout) {
+  .controller('AppCtrl', function ($scope) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.meetings = [
@@ -8,44 +8,30 @@ angular.module('transcribe.controllers', [])
       {title: 'Daily Lunch', time: 'Tomorrow', id: "B3NE"},
       {title: 'Idea Brainstorm', time: 'Last night', id: "7hhC"},
       {title: 'Random Meeting', time: 'Random time', id: "X4f2"}];
-
-    $scope.record = function () {
-      // Show the action sheet
-      var hideSheet = $ionicActionSheet.show({
-        buttons: [
-          { text: '<b>Share</b> This' },
-          { text: 'Move' }],
-        destructiveText: 'Delete',
-        titleText: 'Modify your album',
-        cancelText: 'Cancel',
-        cancel: function () {
-          console.log('cancel');
-        },
-        buttonClicked: function (index) {
-          console.log(index);
-          return true;
-        }
-      });
-
-      // For example's sake, hide the sheet after two seconds
-      $timeout(function () {
-        hideSheet();
-      }, 2000);
-    };
   })
 
-  .controller('RecordCtrl', function ($scope) {
-    var apiKey = 45199562;
-    var sessionId = '2_MX40NTE5OTU2Mn5-MTQyODE5NDA2NTIyMX5ZRElTb2UvaEp6b3JrZUFHbUMwYmxNY29-fg';
-    var session = OT.initSession(apiKey, sessionId);
-    var token = 'T1==cGFydG5lcl9pZD00NTE5OTU2MiZzaWc9MDEyZWZkZmIwNGY4NGE3ODFlY2Q1NDY2MjhhZTZhYTg0ZTAxN2E0Mzpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5URTVPVFUyTW41LU1UUXlPREU1TkRBMk5USXlNWDVaUkVsVGIyVXZhRXA2YjNKclpVRkhiVU13WW14TlkyOS1mZyZjcmVhdGVfdGltZT0xNDI4MTk0MTI4Jm5vbmNlPTAuOTg5OTk3NDMyMDU0MjAyNyZleHBpcmVfdGltZT0xNDI4MjgwNTI4';
-    session.connect(token, function(error) {
-      if (error) {
-        console.log(error.message);
-      } else {
-        console.log('connected to session');
-      }
-    });
+  .controller('RecordCtrl', function ($scope, $cordovaCapture, $ionicActionSheet) {
+
+    $scope.captureAudio = function () {
+      var options = { limit: 3, duration: 10 };
+
+      $cordovaCapture.captureAudio(options).then(function (audioData) {
+        // Success! Audio data is here
+        $ionicActionSheet.show({buttonLabels: ['Success!']})
+          .then(function (btnIndex) {
+            var index = btnIndex;
+            console.log(index);
+          });
+        audioData.size();
+      }, function (err) {
+        // An error occurred. Show a message to the user
+        $ionicActionSheet.show({buttonLabels: [err]})
+          .then(function (btnIndex) {
+            var index = btnIndex;
+            console.log(index);
+          });
+      });
+    };
   })
 
   .controller('MeetingCtrl', function ($scope, $stateParams) {
